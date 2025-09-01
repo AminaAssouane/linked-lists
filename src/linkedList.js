@@ -104,8 +104,9 @@ export default class LinkedList {
     else {
       let tmp = this.head;
       let listString = "";
-      while (tmp != null) {
-        listString += `( ${tmp.value} ) => `;
+      while (tmp !== null) {
+        listString += `( ${tmp.value} ) -> `;
+        tmp = tmp.next;
       }
       listString += "null";
       return listString;

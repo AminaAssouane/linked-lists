@@ -99,5 +99,16 @@ export default class LinkedList {
     }
   }
 
-  toString() {}
+  toString() {
+    if (this.head === null) return "null";
+    else {
+      let tmp = this.head;
+      let listString = "";
+      while (tmp != null) {
+        listString += `( ${tmp.value} ) => `;
+      }
+      listString += "null";
+      return listString;
+    }
+  }
 }

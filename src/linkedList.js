@@ -17,10 +17,7 @@ export default class LinkedList {
   }
 
   prepend(value) {
-    if (this.head === null) this.head = new Node(value, null);
-    else {
-      this.head = new Node(this.head.value, this.head);
-    }
+    this.head = new Node(value, this.head);
   }
 
   size() {
@@ -61,8 +58,11 @@ export default class LinkedList {
   }
 
   pop() {
-    if (this.head === null || this.size() === 1) return null;
-    else {
+    if (this.head === null) return null;
+    if (this.head.next === null) {
+      this.head = null;
+      return;
+    } else {
       let prev = null;
       let curr = this.head;
       while (curr.next !== null) {
@@ -77,7 +77,7 @@ export default class LinkedList {
     if (this.head === null) return false;
     else {
       let tmp = this.head;
-      while (tmp.value !== value && tmp !== null) {
+      while (tmp !== null && tmp.value !== value) {
         tmp = tmp.next;
       }
       if (tmp === null) return false;
@@ -90,7 +90,7 @@ export default class LinkedList {
     else {
       let index = 0;
       let tmp = this.head;
-      while (tmp.value !== value && tmp !== null) {
+      while (tmp !== null && tmp.value !== value) {
         index++;
         tmp = tmp.next;
       }
